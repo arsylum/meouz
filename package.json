@@ -1,15 +1,28 @@
 {
-	"name": "meouz",
+	"name": "meaonz",
 	"version": "0.1.0",
-	"description": "A very simple web development kickstart framework using just npm as a build tool.",
+	"description": "A very simple MEAN stack environment using just npm as a build tool.",
 	"repository": { 
 		"type" : "git",
 		"url" : "https://github.com/arsylum/meouz.git"
 	},
 	"license": "MIT",
 
+	"main": "rearz/server.js",
 
+	"dependencies": {
+		"express": "latest",
+		"body-parser" : "latest",
+        "method-override" : "latest",
+		
+		"mongoose": "latest"
+		
+	},
 	"devDependencies": {
+		"angular": "latest",
+		"angular-route": "^1.5.1",
+		"bootstrap": "^4.0.0-alpha.2",
+
 		"stylus": "latest",
 		"autoprefixer": "latest",
 		"postcss": "latest",
@@ -18,8 +31,8 @@
 		"uglifyjs": "latest",
 
 		"watch": "latest",
-		"parallelshell": "latest",
-		"live-reload": "latest"
+		"browser-sync": "latest",
+		"concurrently": "latest"
 	},
 
 	
@@ -27,13 +40,13 @@
 		"style:dev": 		"stylus < inz/styl/main.styl | postcss --u autoprefixer -b 'last 2 versions' > ouz/haz/css/main.css",
 		"watch:style:dev": 	"watch 'npm run style:dev' inz/styl/",
 
-		"js:dev": 			"find inz/js -type f -name '*.js' -exec cat {} + > ouz/haz/js/main.js",
+		"js:dev": 			"browserify inz/js/alpha.js -o ouz/haz/js/main.js",
 		"watch:js:dev": 	"watch 'npm run js:dev' inz/js",
 
 		"livereload": 		"live-reload ouz/ --port 9091 --debug",
 
 
-		"watch:dev": 		"parallelshell 'npm run watch:style:dev' 'npm run watch:js:dev' 'npm run livereload'",
+		"dev": "concurrently 'npm run watch:style:dev' 'npm run watch:js:dev' 'npm run lite'",
 		"start": 			"npm run watch:dev"
 	}
 }	
