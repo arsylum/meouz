@@ -27,27 +27,10 @@ module.exports = function(app) {
 
 	// frontend routes =========================================================
 	// route to handle all angular requests
-
-	var ouz = [ // explicitly serve all assets needed to get angular going?
-		'haz/js/main.js',
-		'haz/css/main.css',
-		'*'
-	];
-
-	for(let o of ouz) {
-		let f = o;
-		console.log('registering /' + o);
-		switch(o) {
-		case '*': f = 'index.html';
-		}
-		app.get('/' + o, function(req,res) {
-			res.sendFile('./ouz/' + f, { root: __dirname + '/../' });
-		});
-	}
-	// app.get('*', function(req, res) {
-	// 	res.sendFile('./ouz/index.html', {
-	// 		root: __dirname + '/../'}
-	// 	); // load frontend which will be controlled by angular
-	// });
+	app.get('*', function(req, res) {
+		res.sendFile('./ouz/index.html', {
+			root: __dirname + '/../'}
+		); // load frontend which will be controlled by angular
+	});
 
 };
