@@ -1,7 +1,16 @@
 class PageController {
 
-	constructor($scope) {
-		$scope.foo = "bar";
+	constructor($scope, $http) {
+		$scope.foo = 'bar';
+
+		$scope.postIt = function() {
+
+			$http({ method: 'POST', url: '/api/residents'}).then(function successCallback(response) {
+				console.log(response);
+			}, function errorCallback(response) {
+				console.log(response);
+			});
+		};
 	}
 
 	// title () {
