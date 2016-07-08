@@ -1,52 +1,46 @@
 {
-	"name": "meaonz",
-	"version": "0.1.0",
-	"description": "A very simple MEAN stack environment using just npm as a build tool.",
-	"repository": { 
-		"type" : "git",
-		"url" : "https://github.com/arsylum/meouz.git"
-	},
-	"license": "MIT",
-
-	"main": "rearz/server.js",
-
-	"dependencies": {
-		"express": "latest",
-		"body-parser" : "latest",
-        "method-override" : "latest",
-		
-		"mongoose": "latest"
-		
-	},
-	"devDependencies": {
-		"angular": "latest",
-		"angular-route": "^1.5.1",
-		"bootstrap": "^4.0.0-alpha.2",
-
-		"stylus": "latest",
-		"autoprefixer": "latest",
-		"postcss": "latest",
-		"postcss-cli": "latest",
-
-		"uglifyjs": "latest",
-
-		"watch": "latest",
-		"browser-sync": "latest",
-		"concurrently": "latest"
-	},
-
-	
-	"scripts": {
-		"style:dev": 		"stylus < inz/styl/main.styl | postcss --u autoprefixer -b 'last 2 versions' > ouz/haz/css/main.css",
-		"watch:style:dev": 	"watch 'npm run style:dev' inz/styl/",
-
-		"js:dev": 			"browserify inz/js/alpha.js -o ouz/haz/js/main.js",
-		"watch:js:dev": 	"watch 'npm run js:dev' inz/js",
-
-		"livereload": 		"live-reload ouz/ --port 9091 --debug",
-
-
-		"dev": "concurrently 'npm run watch:style:dev' 'npm run watch:js:dev' 'npm run lite'",
-		"start": 			"npm run watch:dev"
-	}
-}	
+  "name": "meaonz",
+  "version": "0.1.0",
+  "description": "A very simple MEAN stack environment using just npm as a build tool.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arsylum/meouz.git"
+  },
+  "license": "MIT",
+  "main": "rearz/server.js",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "dependencies": {
+    "express": "latest",
+    "body-parser": "latest",
+    "method-override": "latest",
+    "mongoose": "latest"
+  },
+  "devDependencies": {
+    "angular": "latest",
+    "angular-route": "^1.5.1",
+    "autoprefixer": "latest",
+    "babel-cli": "latest",
+    "babel-preset-es2015": "latest",
+    "babelify": "^7.3.0",
+    "bootstrap": "^4.0.0-alpha.2",
+    "browser-sync": "latest",
+    "concurrently": "latest",
+    "postcss": "latest",
+    "postcss-cli": "latest",
+    "stylus": "latest",
+    "watch": "latest"
+  },
+  "scripts": {
+    "server": "node rearz/server.js",
+    "style:dev": "stylus < inz/styl/main.styl | postcss --u autoprefixer -b 'last 2 versions' > ouz/haz/sparklz/main.css",
+    "watch:style:dev": "watch 'npm run style:dev' inz/styl/",
+    "js:dev": "browserify inz/js/alpha.js -t babelify -o ouz/haz/spellz/main.js",
+    "watch:js:dev": "watch 'npm run js:dev' inz/js",
+    "dev": "concurrently 'npm run watch:style:dev' 'npm run watch:js:dev' 'npm run server'",
+    "start": "npm run dev"
+  }
+}

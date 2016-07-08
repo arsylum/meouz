@@ -3,12 +3,14 @@
 <head>
 	<title></title>
 
-	<link rel="stylesheet" href="haz/css/main.css" />
-	<script type="text/javascript" src="haz/js/main.js"></script>
+	<link rel="stylesheet" href="haz/sparklz/main.css" />
+	<script type="text/javascript" src="haz/spellz/main.js"></script>
 
 </head>
 <body>
-<p> just a test</p>
-<p> or something else? </p>
+<div ng-view></div>
+<div ng-controller="TestController">
+<p>var = {{foo}}</p>
+</div>
 </body>
 </html>
