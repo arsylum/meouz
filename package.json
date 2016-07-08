@@ -36,7 +36,7 @@
   },
   "scripts": {
     "server": "node rearz/server.js",
-    "style:dev": "stylus < inz/styl/main.styl | postcss --u autoprefixer -b 'last 2 versions' > ouz/haz/sparklz/main.css",
+    "style:dev": "stylus < inz/styl/main.styl --include-css | postcss --u autoprefixer -b 'last 2 versions' > ouz/haz/sparklz/main.css",
     "watch:style:dev": "watch 'npm run style:dev' inz/styl/",
     "js:dev": "browserify inz/js/alpha.js -t babelify -o ouz/haz/spellz/main.js",
     "watch:js:dev": "watch 'npm run js:dev' inz/js",
