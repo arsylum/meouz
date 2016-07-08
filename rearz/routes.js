@@ -11,15 +11,14 @@ module.exports = function(app) {
 
 	// sample api route
 	app.get('/api/residents', function(req, res) {
-		// use mongoose to get all nerds in the database
-		Resident.find(function(err, nerds) {
+		// use mongoose to get all residents
+		Resident.find(function(err, resp) {
 
 			// if there is an error retrieving, send the error. 
-					// nothing after res.send(err) will execute
-			if (err)
-				res.send(err);
+			// nothing after res.send(err) will execute
+			if (err) { res.send(err); }
 
-			res.json(nerds); // return all nerds in JSON format
+			res.json(resp); // return all nerds in JSON format
 		});
 	});
 
@@ -28,10 +27,27 @@ module.exports = function(app) {
 
 	// frontend routes =========================================================
 	// route to handle all angular requests
-	app.get('*', function(req, res) {
-		res.sendFile('./ouz/index.html', {
-			root: __dirname + '/../'}
-		); // load frontend which will be controlled by angular
-	});
+
+	var ouz = [ // explicitly serve all assets needed to get angular going?
+		'haz/js/main.js',
+		'haz/css/main.css',
+		'*'
+	];
+
+	for(let o of ouz) {
+		let f = o;
+		console.log('registering /' + o);
+		switch(o) {
+		case '*': f = 'index.html';
+		}
+		app.get('/' + o, function(req,res) {
+			res.sendFile('./ouz/' + f, { root: __dirname + '/../' });
+		});
+	}
+	// app.get('*', function(req, res) {
+	// 	res.sendFile('./ouz/index.html', {
+	// 		root: __dirname + '/../'}
+	// 	); // load frontend which will be controlled by angular
+	// });
 
 };
